@@ -7,16 +7,20 @@ android {
     defaultConfig {
         applicationId "com.yoval.community.chatapp"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+            }
     }
 
 }
@@ -27,7 +31,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-core:9.6.1'
+    compile 'com.google.firebase:firebase-auth:9.6.1'
     compile 'com.android.support:design:25.0.1'
     compile 'com.firebaseui:firebase-ui:0.6.0'
     testCompile 'junit:junit:4.12'
