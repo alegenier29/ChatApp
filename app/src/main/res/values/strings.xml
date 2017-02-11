@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ChatApp</string>
+    <string name="title_activity_distance">Bienvenue. Configurez la distance</string>
+    <string name="Bienvenue">Bienvenue</string>
+    <string name="title_activity_categories">Categories</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_services">Services</string>
+    <string-array name="allPost">
+        <item>Reparation lavevaiselle</item>
+        <item>Reparation four</item>
+        <item>Reparation frigo</item>
+        <item>Reparation lavabo</item>
+    </string-array>
+
+    <string-array name="Description">
+        <item>S\'il vous plaît reparer lave-vaisselle</item>
+        <item>S\'il vous plaît reparer four</item>
+        <item>S\'il vous plaît reparer frigo</item>
+        <item>S\'il vous plaît reparer lavabo</item>
+    </string-array>
 </resources>

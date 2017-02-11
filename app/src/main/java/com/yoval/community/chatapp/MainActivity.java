@@ -1,7 +1,8 @@
 package com.yoval.community.chatapp;
 
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -22,22 +23,27 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.yoval.community.localisation.CustomizedLocationListener;
+import com.yoval.community.model.ChatMessage;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int SIGN_IN_REQUEST_CODE = 10;
     private FirebaseListAdapter<ChatMessage> adapter;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+       /* LocationManager locationManager;
+        CustomizedLocationListener locationListener  = new CustomizedLocationListener(getApplicationContext());
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5 * 60 * 1000,10,locationListener);*/
+
+
 
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             // Start sign in/sign up activity
@@ -84,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                             );
                     // Clear the input
                     input.setText("");
+
+
                 }
 
             }

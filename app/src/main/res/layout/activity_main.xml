@@ -23,22 +23,23 @@
         android:src="@drawable/ic_send_black_24dp"
         app:fabSize="mini" />
 
-
-
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:id="@+id/text_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/fab"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:stackFromBottom="true"
         android:layout_alignParentStart="true">
 
         <EditText
+            android:inputType="textMultiLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Input"
-            android:id="@+id/input"
-            />
+            android:stackFromBottom="true"
+            android:id="@+id/input" />
     </android.support.design.widget.TextInputLayout>
 
     <ListView
@@ -53,5 +54,7 @@
         android:id="@+id/list_of_messages"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
+        android:layout_below="@+id/text_layout"
         android:layout_marginBottom="16dp"/>
+
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.yoval.community.chatapp;
+package com.yoval.community.model;
 
 import java.util.Date;
 
