@@ -3,11 +3,9 @@ package com.yoval.community.chatapp;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,18 +20,15 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import java.io.Console;
-
 public class Services extends AppCompatActivity {
 
-    Integer[] iconsIds = {R.drawable.piping_48,
+    Integer[] iconsIds = {
+            R.drawable.piping_48,
             R.drawable.violin_48,
             R.drawable.elderlyperson_48,
             R.drawable.dogpark_48,
             R.drawable.doorsensoralarmed_48,
-            R.drawable.cooker_48,
             R.drawable.exam_48,
-            R.drawable.handball_48,
             R.drawable.parentguardian_48,
             R.drawable.radish_48,
             R.drawable.suv_48,
@@ -47,9 +42,7 @@ public class Services extends AppCompatActivity {
             "Aide aux aînes",
             "Animaux de compagnie",
             "Securité du quartier",
-            "Reparations electro",
             "Preparer des examens",
-            "Pratiquer des sports",
             "Garde des enfants",
             "Partage de nourriture",
             "Covoiturage",
@@ -97,7 +90,7 @@ public class Services extends AppCompatActivity {
 
     public void goToDetailsView(int position)
     {
-        Intent intent = new Intent(this,Reparations.class);
+        Intent intent = new Intent(this, Post.class);
         intent.putExtra("Message", labels[position]);
         startActivity(intent);
     }
@@ -167,9 +160,7 @@ public class Services extends AppCompatActivity {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             if (convertView == null) {
-                view = new View(context);
                 view = layoutInflater.inflate(R.layout.content_services, null);
-
                 TextView textView = (TextView) view.findViewById(R.id.grid_text);
                 ImageView imageView = (ImageView) view.findViewById(R.id.grid_image);
 

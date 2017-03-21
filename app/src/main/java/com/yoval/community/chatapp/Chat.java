@@ -1,12 +1,10 @@
 package com.yoval.community.chatapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.location.LocationManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,15 +16,13 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseListAdapter;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.yoval.community.localisation.CustomizedLocationListener;
 import com.yoval.community.model.ChatMessage;
 
-public class MainActivity extends AppCompatActivity {
+public class Chat extends AppCompatActivity {
 
     private static final int SIGN_IN_REQUEST_CODE = 10;
     private FirebaseListAdapter<ChatMessage> adapter;
@@ -42,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         CustomizedLocationListener locationListener  = new CustomizedLocationListener(getApplicationContext());
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5 * 60 * 1000,10,locationListener);*/
-
-
 
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             // Start sign in/sign up activity
@@ -137,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(MainActivity.this,
+                            Toast.makeText(Chat.this,
                                     "You have been signed out.",
                                     Toast.LENGTH_LONG)
                                     .show();
