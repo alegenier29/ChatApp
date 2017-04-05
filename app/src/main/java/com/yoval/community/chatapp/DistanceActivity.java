@@ -62,6 +62,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.yoval.community.localisation.CustomizedLocationListener;
 import com.yoval.community.model.User;
 
+//icons from: http://support.flaticon.com/
+//<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 public class DistanceActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -70,7 +72,7 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
     GoogleMap googleMap;
     LocationManager locationManager;
     GoogleApiClient googleApiClient;
-    LatLng userLocation;
+    LatLng userLocation = new LatLng(45.4170084, -72.1142148); //Sherbrooke
     int radius = 1;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -296,7 +298,7 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
 
     private void goToDetailView() {
 
-        Intent intent = new Intent(this, Services.class);
+        Intent intent = new Intent(this, UserAction.class);
         startActivity(intent);
     }
 
@@ -382,12 +384,6 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
         googleApiClient.connect();
     }
 
-    private void goToLocation(double lat, double lon) {
-        LatLng latLon = new LatLng(lat, lon);
-        CameraUpdate camUpdate = CameraUpdateFactory.newLatLng(latLon);
-        googleMap.moveCamera(camUpdate);
-    }
-
     private void goToLocationZoom(double lat, double lon, float zoom) {
         LatLng latLon = new LatLng(lat, lon);
         CameraUpdate camUpdate = CameraUpdateFactory.newLatLngZoom(latLon, zoom);
@@ -461,7 +457,8 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     private void updateZoomMap() {
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(userLocation, getZoomLevel(radius));
+        float zoom = getZoomLevel(radius);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(userLocation, zoom);
         googleMap.animateCamera(update);
 
     }

@@ -1,11 +1,13 @@
 <resources>
-    <string name="app_name">ChatApp</string>
-    <string name="title_activity_distance">Bienvenue. Configurez la distance</string>
+    <string name="app_name">Symbiose</string>
+    <string name="title_activity_distance">Configurez la distance</string>
     <string name="Bienvenue">Bienvenue</string>
     <string name="title_activity_categories">Categories</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_services">Services</string>
+    <string name="title_activity_userAction">Je veux</string>
+
     <string-array name="allPost">
         <item>Reparation lavevaiselle</item>
         <item>Reparation four</item>
