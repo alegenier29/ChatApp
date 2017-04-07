@@ -37,7 +37,7 @@
 
         <activity
             android:name=".DistanceActivity"
-            android:label="@string/title_activity_distance"
+            android:label="Symbiose"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,6 +48,10 @@
         <activity
             android:name=".UserAction"
             android:label="@string/title_activity_userAction"></activity>
+
+        <activity
+            android:name=".CreationService"
+            android:label="Création de service"></activity>
 
         <activity
             android:name=".Services"

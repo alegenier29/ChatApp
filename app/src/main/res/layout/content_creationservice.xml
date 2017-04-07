@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:text="Titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/creationservice_titlelabel"
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Entrez le titre de votre service"
+        android:ems="10"
+        android:id="@+id/creationserivice_title" />
+
+    <TextView
+        android:text="Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/creationservice_descriptionlabel"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:minLines="2"
+        android:gravity="top|left"
+        android:maxLines="5"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:scrollbars="vertical"
+        android:hint="Entrez la description de votre service"
+        android:id="@+id/creationservice_description" />
+
+    <TextView
+        android:text="Prix ($/heure) "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/creationservice_prix_label"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:minWidth="2dp"
+        android:inputType="number"
+        android:hint="$1"
+        android:ems="10"
+        android:id="@+id/creationservice_price" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="224dp"
+        android:layout_weight="0.64">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Disponibilité de"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/creationservice_labelfrom"
+                android:textStyle="normal|bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:text="Date:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/creationservice_labelfromdate" />
+
+            <TextView
+                android:text="Heure:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/creationservice_labelfromheure" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:focusable="false"
+                android:id="@+id/creationservice_datefrom" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:ems="10"
+                android:focusable="false"
+                android:id="@+id/creationservice_timefrom" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Jusqu'à"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/creationserivice_labelto"
+                android:textStyle="normal|bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:text="Date:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/creationservice_labeltodate" />
+
+            <TextView
+                android:text="Heure:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/creationservice_labeltoheure" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:focusable="false"
+                android:id="@+id/creationservice_dateto" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:ems="10"
+                android:focusable="false"
+                android:id="@+id/creationservice_timeto" />
+
+
+        </TableRow>
+
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:id="@+id/creationservice_cancelbutton"
+                android:text="Annuler"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:elevation="1dp" />
+
+            <Button
+                android:id="@+id/creationservice_publishbutton"
+                android:text="Publier"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

@@ -74,7 +74,13 @@ public class Services extends AppCompatActivity {
                                     int position, long id) {
 
                 // DO something
-                goToDetailsView(position);
+                //goToDetailsView(position);
+
+
+                Intent intent = new Intent(getApplicationContext(), CreationService.class);
+                startActivity(intent);
+
+
 
             }
         });

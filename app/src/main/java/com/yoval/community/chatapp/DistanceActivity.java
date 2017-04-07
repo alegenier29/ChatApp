@@ -433,7 +433,9 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
             CameraUpdate update = CameraUpdateFactory.newLatLngZoom(userLocation, getZoomLevel(radius));
             googleMap.animateCamera(update);
 
+
             FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (firebaseUser != null) {
             userId = firebaseUser.getUid();
             FirebaseDatabase.getInstance()
                     .getReference().child("users").child(userId).child("location").setValue(userLocation);
@@ -453,6 +455,7 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
 
             });
 
+            }
         }
     }
 
