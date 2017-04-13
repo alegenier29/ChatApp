@@ -20,7 +20,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-public class Services extends AppCompatActivity {
+public class ServicesAdvertise extends AppCompatActivity {
 
     Integer[] iconsIds = {
             R.drawable.ic_reparation,
@@ -57,13 +57,13 @@ public class Services extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services);
+        setContentView(R.layout.activity_services_advertise);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_services_advertise);
         setSupportActionBar(toolbar);
 
 
-        GridView grid = (GridView) findViewById(R.id.grid_view);
+        GridView grid = (GridView) findViewById(R.id.grid_view_advertise);
 
         //Set the adapter
         grid.setAdapter(new IconAdapter(this));
@@ -74,17 +74,10 @@ public class Services extends AppCompatActivity {
                                     int position, long id) {
 
                 // DO something
-                //goToDetailsView(position);
-
-
-                Intent intent = new Intent(getApplicationContext(), CreationService.class);
-                startActivity(intent);
-
-
+                goToDetailsView(position);
 
             }
         });
-
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -92,9 +85,8 @@ public class Services extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void goToDetailsView(int position)
-    {
-        Intent intent = new Intent(this, Post.class);
+    public void goToDetailsView(int position) {
+        Intent intent = new Intent(this, CreationService.class);
         intent.putExtra("Message", labels[position]);
         startActivity(intent);
     }
@@ -105,7 +97,7 @@ public class Services extends AppCompatActivity {
      */
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("Services Page") // TODO: Define a title for the content shown.
+                .setName("ServicesAdvertise Page") // TODO: Define a title for the content shown.
                 // TODO: Make sure this auto-generated URL is correct.
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
@@ -164,9 +156,9 @@ public class Services extends AppCompatActivity {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             if (convertView == null) {
-                view = layoutInflater.inflate(R.layout.content_services, null);
-                TextView textView = (TextView) view.findViewById(R.id.grid_text);
-                ImageView imageView = (ImageView) view.findViewById(R.id.grid_image);
+                view = layoutInflater.inflate(R.layout.content_services_advertise, null);
+                TextView textView = (TextView) view.findViewById(R.id.grid_text_advertise);
+                ImageView imageView = (ImageView) view.findViewById(R.id.grid_image_advertise);
 
                 textView.setText(labels[position]);
                 imageView.setImageResource(iconsIds[position]);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import java.util.Date;
 
 import static com.yoval.community.chatapp.R.id.image;
 
-public class Post extends AppCompatActivity {
+public class PostRepairs extends AppCompatActivity {
 
     ListView list;
     String [] titles;
@@ -29,14 +30,17 @@ public class Post extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reparations);
+        setContentView(R.layout.activity_reparations_post);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_post_repairs);
+        setSupportActionBar(toolbar);
 
         Resources resources = getResources();
         titles = resources.getStringArray(R.array.allPost);
         descriptions = resources.getStringArray(R.array.Description);
         date = new Date();
 
-        list = (ListView) findViewById(R.id.postList);
+        list = (ListView) findViewById(R.id.postList_reparations);
 
         PostAdapter postAdapter = new PostAdapter(this, titles, image, date, descriptions);
         list.setAdapter(postAdapter);

@@ -4,8 +4,11 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -27,11 +30,17 @@ public class CreationService extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creationservice);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_creationdeservice);
+        setSupportActionBar(toolbar);
+
 
         final EditText dateFrom = (EditText) this.findViewById(R.id.creationservice_datefrom);
         final EditText dateTo = (EditText) this.findViewById(R.id.creationservice_dateto);
         final EditText timeFrom = (EditText) this.findViewById(R.id.creationservice_timefrom);
         final EditText timeTo = (EditText) this.findViewById(R.id.creationservice_timeto);
+        final EditText title = (EditText) this.findViewById(R.id.creationservice_title);
+        final EditText description = (EditText) this.findViewById(R.id.creationservice_description);
+        final EditText prix = (EditText) this.findViewById(R.id.creationservice_price);
 
         final Calendar myCalendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -151,6 +160,37 @@ public class CreationService extends AppCompatActivity {
 
             }
         });
+
+        Button buttonCancel = (Button) findViewById(R.id.cancelbutton_creationservice);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+        Button buttonPublish = (Button) findViewById(R.id.cancelbutton_creationservice);
+        buttonPublish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Editable serviceTitle = title.getText();
+                Editable serviceDescription = description.getText();
+                Editable servicePrix = prix.getText();
+
+                if (!serviceTitle.equals("") && !serviceDescription.equals("") && !servicePrix.equals("")) {
+                    //Store service in database
+
+                } else {
+                    //Fill in required fields
+
+
+                }
+            }
+        });
+
+
 
 
     }

@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -69,12 +68,12 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
 
     private static final int SIGN_IN_REQUEST_CODE = 10;
     private static final int REQUEST_CHECK_SETTINGS = 1;
-    GoogleMap googleMap;
+    private GoogleMap googleMap;
     LocationManager locationManager;
     GoogleApiClient googleApiClient;
     LatLng userLocation = new LatLng(45.4170084, -72.1142148); //Sherbrooke
     int radius = 1;
-    /**
+    /**°
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
@@ -134,7 +133,7 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
         }
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarDistance);
         setSupportActionBar(toolbar);
 
         SeekBar distanceBar = (SeekBar) findViewById(R.id.seekBarDistance); // make seekbar object
@@ -157,7 +156,7 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
                                           boolean fromUser) {
                 // TODO Auto-generated method stub
                 TextView textViewDistance = (TextView) findViewById(R.id.textViewDistance);
-                textViewDistance.setText(progress + " KM");
+                textViewDistance.setText(progress + " Km");
                 radius = progress;
                 SaveUserInformations(radius);
                 updateZoomMap();
@@ -257,7 +256,6 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
             }
         });
     }
-
 
     private void SaveUserInformations(int radius) {
 
@@ -374,8 +372,6 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap map) {
         googleMap = map;
-        Criteria criteria = new Criteria();
-
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
@@ -384,11 +380,6 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
         googleApiClient.connect();
     }
 
-    private void goToLocationZoom(double lat, double lon, float zoom) {
-        LatLng latLon = new LatLng(lat, lon);
-        CameraUpdate camUpdate = CameraUpdateFactory.newLatLngZoom(latLon, zoom);
-        googleMap.moveCamera(camUpdate);
-    }
 
     LocationRequest locationRequest;
 
@@ -462,8 +453,10 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
     private void updateZoomMap() {
         float zoom = getZoomLevel(radius);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(userLocation, zoom);
-        googleMap.animateCamera(update);
 
+        if (googleMap != null) {
+        googleMap.animateCamera(update);
+        }
     }
 
     private float getZoomLevel(int radius) {

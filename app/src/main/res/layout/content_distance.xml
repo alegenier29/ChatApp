@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_distance"
@@ -13,35 +20,64 @@
     tools:context="com.yoval.community.chatapp.DistanceActivity"
     tools:showIn="@layout/activity_distance">
 
-    <RelativeLayout
+
+        <TableLayout
+            android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:text="1 KM"
-            android:layout_width="match_parent"
-            android:id="@+id/textViewDistance"
-            android:textAlignment="center"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:layout_marginTop="11dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:weightSum="1"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
 
 
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/mapFragment"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/seekBarDistance"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TableRow android:layout_weight="1">
+
+                <TextView
+                    android:text="1 Km"
+                    android:layout_width="match_parent"
+                    android:id="@+id/textViewDistance"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:layout_marginTop="11dp"
+                    android:layout_weight="1" />
+
+            </TableRow>
+
+            <TableRow android:layout_weight="1">
+
+                <SeekBar
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:max="10"
+                    android:progress="1"
+                    android:id="@+id/seekBarDistance"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_weight="1"
+                android:id="@+id/mapFile">
+
+                <fragment
+                    android:id="@+id/mapFragment"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="1" />
+
+
+            </TableRow>
+
+
+        </TableLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
@@ -49,30 +85,9 @@
             android:clickable="true"
             android:id="@+id/distNext"
             android:tint="@android:color/white"
-            android:layout_below="@+id/mapFragment"
             android:src="@drawable/ic_send_black_24dp"
-            android:layout_gravity="bottom|right"
-            app:useCompatPadding="true"
             app:fabSize="normal"
-            android:layout_marginTop="320dp"
-            android:layout_alignTop="@+id/mapFragment"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <SeekBar
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:max="10"
-            android:progress="1"
-            android:id="@+id/seekBarDistance"
-            android:minHeight="10dip"
-            android:maxHeight="10000dip"
-            android:layout_marginTop="25dp"
-            android:layout_below="@+id/textViewDistance"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
-</RelativeLayout>
+</ScrollView>

@@ -61,7 +61,7 @@ public class Chat extends AppCompatActivity {
             displayChatMessages();
         }
 
-        //Post a chat message to the database
+        //PostRepairs a chat message to the database
         FloatingActionButton fab =
                 (FloatingActionButton) findViewById(R.id.fab);
 

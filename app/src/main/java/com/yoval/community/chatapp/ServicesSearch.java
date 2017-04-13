@@ -15,28 +15,38 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-/**
- * Created by Alejandro on 2017-03-31.
- */
-
-public class UserAction extends AppCompatActivity {
+public class ServicesSearch extends AppCompatActivity {
 
     Integer[] iconsIds = {
-            R.drawable.ic_megaphone,
-            R.drawable.ic_binoculars,
-            R.drawable.ic_customer_rate,
-            R.drawable.ic_user_profile
-
+            R.drawable.ic_reparation,
+            R.drawable.ic_drum_set,
+            R.drawable.ic_elder,
+            R.drawable.ic_dog,
+            R.drawable.ic_alarm,
+            R.drawable.ic_exam,
+            R.drawable.ic_radish,
+            R.drawable.ic_car,
+            R.drawable.ic_baseball,
+            R.drawable.ic_bucket,
+            R.drawable.ic_plus
     };
     String[] labels = {
-            "Annoncer un service",
-            "Chercher une service",
-            "Évaluer un service",
-            "Modifier mon profil"
+            "Reparations",
+            "Lesson de musique",
+            "Aide aux aînes",
+            "Animaux de compagnie",
+            "Securité du quartier",
+            "Preparer des examens",
+            "Partage de nourriture",
+            "Covoiturage",
+            "Faire des sports",
+            "Nettoyage de maison",
+            "Autre"
     };
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -47,12 +57,13 @@ public class UserAction extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_action);
+        setContentView(R.layout.activity_services_search);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarAction);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_service_search);
         setSupportActionBar(toolbar);
 
-        GridView grid = (GridView) findViewById(R.id.grid_view_action);
+
+        GridView grid = (GridView) findViewById(R.id.grid_view_search);
 
         //Set the adapter
         grid.setAdapter(new IconAdapter(this));
@@ -61,32 +72,24 @@ public class UserAction extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+
                 // DO something
-                goToServicesView(position);
+                goToDetailsView(position);
+
             }
         });
+
+
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    private void goToServicesView(int position) {
-
-        Intent intent = new Intent();
-        switch (position) {
-
-            case 0:
-                intent = new Intent(this, ServicesAdvertise.class);
-                break;
-
-            case 1:
-                intent = new Intent(this, ServicesSearch.class);
-                break;
-            default:
-                intent = new Intent(this, ServicesSearch.class);
-        }
-
+    public void goToDetailsView(int position)
+    {
+        Intent intent = new Intent(this, PostRepairs.class);
+        intent.putExtra("Message", labels[position]);
         startActivity(intent);
     }
 
@@ -94,15 +97,15 @@ public class UserAction extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    public com.google.android.gms.appindexing.Action getIndexApiAction() {
+    public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("ServicesAdvertise Page") // TODO: Define a title for the content shown.
+                .setName("ServicesSearchPage") // TODO: Define a title for the content shown.
                 // TODO: Make sure this auto-generated URL is correct.
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
-        return new com.google.android.gms.appindexing.Action.Builder(com.google.android.gms.appindexing.Action.TYPE_VIEW)
+        return new Action.Builder(Action.TYPE_VIEW)
                 .setObject(object)
-                .setActionStatus(com.google.android.gms.appindexing.Action.STATUS_TYPE_COMPLETED)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
                 .build();
     }
 
@@ -125,7 +128,6 @@ public class UserAction extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
-
 
     public class IconAdapter extends BaseAdapter {
 
@@ -156,9 +158,9 @@ public class UserAction extends AppCompatActivity {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             if (convertView == null) {
-                view = layoutInflater.inflate(R.layout.content_action, null);
-                TextView textView = (TextView) view.findViewById(R.id.grid_text_action);
-                ImageView imageView = (ImageView) view.findViewById(R.id.grid_image_action);
+                view = layoutInflater.inflate(R.layout.content_services_search, null);
+                TextView textView = (TextView) view.findViewById(R.id.grid_text_search);
+                ImageView imageView = (ImageView) view.findViewById(R.id.grid_image_search);
 
                 textView.setText(labels[position]);
                 imageView.setImageResource(iconsIds[position]);

@@ -11,9 +11,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.yoval.community.chatapp.ServicesAdvertise"
-    tools:showIn="@layout/activity_action">
+    tools:showIn="@layout/activity_services_advertise">
     <GridView
-        android:id="@+id/grid_view_action"
+        android:id="@+id/grid_view_advertise"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="3"
@@ -21,22 +21,23 @@
         android:stretchMode="columnWidth"
         android:layout_alignParentTop="true" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/grid_image_action"
+            android:id="@+id/grid_image_advertise"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ImageView>
+            android:layout_height="match_parent">
+        </ImageView>
 
         <TextView
-            android:id="@+id/grid_text_action"
+            android:id="@+id/grid_text_advertise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"></TextView>
+            android:layout_gravity="center">
+        </TextView>
 
     </LinearLayout>
 
