@@ -15,27 +15,56 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <TextView
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+            <TextView
+            android:text="* "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:textColor="#FF0000"
+            android:textStyle="normal|bold" />
+
+        <TextView
         android:text="Titre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="1"
         android:id="@+id/creationservice_titlelabel"
         android:textStyle="normal|bold" />
+            </TableRow>
+        </TableLayout>
 
-    <EditText
+
+        <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="Entrez le titre de votre service"
-        android:ems="10"
         android:id="@+id/creationservice_title" />
 
-    <TextView
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TableRow>
+        <TextView
+            android:text="* "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:textColor="#FF0000"
+            android:textStyle="normal|bold" />
+
+        <TextView
         android:text="Description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/creationservice_descriptionlabel"
-        android:textStyle="normal|bold" />
+            android:textStyle="normal|bold" />
+        </TableRow>
+        </TableLayout>
 
     <EditText
         android:inputType="textMultiLine"
@@ -49,12 +78,26 @@
         android:hint="Entrez la description de votre service"
         android:id="@+id/creationservice_description" />
 
-    <TextView
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TableRow>
+        <TextView
+            android:text="* "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:textColor="#FF0000"
+            android:textStyle="normal|bold" />
+
+        <TextView
         android:text="Prix ($/heure) "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/creationservice_prix_label"
         android:textStyle="normal|bold" />
+        </TableRow>
+        </TableLayout>
 
     <EditText
         android:layout_width="140dp"

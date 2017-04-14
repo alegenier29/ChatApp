@@ -49,7 +49,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -453,6 +455,13 @@ public class DistanceActivity extends AppCompatActivity implements OnMapReadyCal
     private void updateZoomMap() {
         float zoom = getZoomLevel(radius);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(userLocation, zoom);
+
+        MarkerOptions currentLocationMarker = new MarkerOptions()
+                .position(userLocation)
+                .title("Votre localisation")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_placeholder));
+
+        googleMap.addMarker(currentLocationMarker);
 
         if (googleMap != null) {
         googleMap.animateCamera(update);

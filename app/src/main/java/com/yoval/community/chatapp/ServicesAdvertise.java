@@ -87,7 +87,7 @@ public class ServicesAdvertise extends AppCompatActivity {
 
     public void goToDetailsView(int position) {
         Intent intent = new Intent(this, CreationService.class);
-        intent.putExtra("Message", labels[position]);
+        intent.putExtra("Category", labels[position]);
         startActivity(intent);
     }
 
