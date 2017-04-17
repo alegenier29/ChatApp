@@ -76,8 +76,13 @@
 
 
         <activity
-            android:name=".PostRepairs"
-            android:label=" Services de réparation offerts"
+            android:name=".Post"
+            android:label=" Services offerts"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ServiceDetail"
+            android:label="Détail du service"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data

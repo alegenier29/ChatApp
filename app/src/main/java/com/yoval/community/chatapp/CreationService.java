@@ -30,6 +30,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import com.yoval.community.chatapp.Tools;
+
 import static java.util.logging.Level.parse;
 
 /**
@@ -220,13 +222,19 @@ public class CreationService extends AppCompatActivity {
                     if (firebaseUser != null) {
                         String userId = firebaseUser.getUid();
 
-                        Service service = new Service(userId, serviceTitle.toString(),serviceDescription.toString(),
-                                Integer.parseInt(servicePrice.toString()),serDateFrom, serDateTo, new Date());
 
-                        String category = findCategorie();
+                        Intent intent= getIntent();
+                        Bundle bundle = intent.getExtras();
+                        String category = Tools.findCategory(bundle);
 
                         if(category != "") {
-                            databaseReference.child("services").child(category).push().setValue(service);
+                            DatabaseReference postRef =databaseReference.child("services").child(category).getRef();
+                            String serviceKey = postRef.push().getKey();
+
+                            Service service = new Service(serviceKey, userId, serviceTitle.toString(),serviceDescription.toString(),
+                                    Integer.parseInt(servicePrice.toString()),serDateFrom, serDateTo, new Date());
+
+                            postRef.child(serviceKey).setValue(service);
                         }
                         else
                         {
@@ -255,56 +263,6 @@ public class CreationService extends AppCompatActivity {
 
         }
 
-            private String findCategorie() {
-                Intent intent= getIntent();
-                Bundle bundle = intent.getExtras();
-
-                if(bundle!=null)
-                {
-                   String category = (String) bundle.get("Category");
-                   String tableName= "";
-                    switch (category)
-                   {
-                       case "Reparations":
-                            tableName="Reparations";
-                            break;
-                       case "Lesson de musique":
-                           tableName="Music";
-                           break;
-                       case "Aide aux aînes":
-                            tableName="Elder";
-                           break;
-                       case "Animaux de compagnie":
-                           tableName="Pets";
-                           break;
-                       case "Securité du quartier":
-                           tableName="Security";
-                           break;
-                       case "Preparer des examens":
-                           tableName="Review";
-                           break;
-                       case "Partage de nourriture":
-                           tableName =  "Food";
-                           break;
-                       case  "Covoiturage":
-                           tableName="Carpooling";
-                           break;
-                       case "Faire des sports":
-                           tableName="Sports";
-                           break;
-                       case "Nettoyage de maison":
-                           tableName="Cleaning";
-                           break;
-                       case "Autre":
-                       tableName= "Other";
-                       break;
-
-
-                   }
-                    return tableName;
-                }
-                return "";
-            }
         });
     }
 }

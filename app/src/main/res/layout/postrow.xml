@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="1dp"
-        android:id="@+id/Date"
+        android:id="@+id/service_date_published"
         android:textColor="#9ca69c"
         android:layout_marginTop="1dp"
         android:layout_marginLeft="10dp"

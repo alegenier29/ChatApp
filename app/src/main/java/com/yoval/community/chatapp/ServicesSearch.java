@@ -88,8 +88,8 @@ public class ServicesSearch extends AppCompatActivity {
 
     public void goToDetailsView(int position)
     {
-        Intent intent = new Intent(this, PostRepairs.class);
-        intent.putExtra("Message", labels[position]);
+        Intent intent = new Intent(this, Post.class);
+        intent.putExtra("Category", labels[position]);
         startActivity(intent);
     }
 
